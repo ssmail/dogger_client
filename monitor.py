@@ -12,7 +12,7 @@ used = psutil.virtual_memory().used/1024/1024
 free = psutil.virtual_memory().free/1024/1024
 
 def save2DB(machineName, osVersion, cpuUsage, memoryUsage, diskUsage, networkUsage):
-	db = MySQLdb.connect(user="root", passwd="hongkf", db="dogger", host="192.168.0.107",port=3308)
+	db = MySQLdb.connect(user="root", passwd="xxxx", db="dogger", host="192.168.0.107",port=3308)
 	db.autocommit(True)
 	cur = db.cursor()
 	sql = 'insert into machine_info (machine_name,os_version, cpu_usage, memory_usage, disk_usage, network_usage, ioread, iowrite, disk_free, memory_free, memory_used, network_recv, network_sent, version, create_date) value ("{machineName}", "{osVersion}", "{cpuUsage}", "{memoryUsage}", "{diskUsage}", "{networkUsage}",0,0,0,0,0,0,0,0, "{create_date}")'.format(machineName = machineName, osVersion = osVersion, cpuUsage = cpuUsage, memoryUsage = memoryUsage, diskUsage = diskUsage, networkUsage = networkUsage, create_date = ctime())
